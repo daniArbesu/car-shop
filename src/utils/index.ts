@@ -23,8 +23,6 @@ export async function fetchCars(filters: FilterProps) {
   url.searchParams.append('fuel_type', fuel);
   url.searchParams.append('limit', limit.toString());
 
-  console.log(url.toString());
-
   try {
     const response = await fetch(url.toString(), { headers });
     return await response.json();
@@ -60,4 +58,12 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
 
   return rentalRatePerDay.toFixed(0);
+};
+
+export const updateSearchParams = (type: string, value: string) => {
+  const searchParams = new URLSearchParams(window.location.search); // We recover the current searchparams
+  searchParams.set(type, value);
+  const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+
+  return newPathname;
 };
