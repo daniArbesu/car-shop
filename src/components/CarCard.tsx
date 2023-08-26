@@ -1,5 +1,5 @@
 'use client';
-import { calculateCarRent } from '@/utils';
+import { calculateCarRent, generateCarImageURL } from '@/utils';
 import { Car } from '../../types';
 import Image from 'next/image';
 import { GasIcon, RightArrow, SteeringWheelIcon, TireIcon } from './ui/Icons';
@@ -30,7 +30,13 @@ const CarCard: React.FC<Props> = ({ car }) => {
         <span className="self-end text-[14px] font-medium">/day</span>
       </p>
       <div className="relative my-3 h-40 w-full object-contain">
-        <Image src="/hero.png" alt="Car Model" fill priority className="object-contain" />
+        <Image
+          src={generateCarImageURL(car)}
+          alt="Car Model"
+          fill
+          priority
+          className="object-contain"
+        />
       </div>
       <div className="relative mt-2 flex w-full">
         <div className="flex w-full justify-between text-gray-500 group-hover:invisible">

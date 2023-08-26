@@ -3,6 +3,7 @@ import { Car } from '../../types';
 import { Transition, Dialog } from '@headlessui/react';
 import { CloseIcon } from './ui/Icons';
 import Image from 'next/image';
+import { generateCarImageURL } from '@/utils';
 
 interface Props {
   isOpen: boolean;
@@ -48,7 +49,7 @@ const CarDetails: React.FC<Props> = ({ isOpen, closeModal, car }) => {
                   <div className="flex flex-1 flex-col gap-3">
                     <div className="bg-pattern relative h-40 w-full rounded-lg bg-cover bg-center">
                       <Image
-                        src="/hero.png"
+                        src={generateCarImageURL(car, 'angle')}
                         alt="Car Model"
                         fill
                         priority
@@ -58,7 +59,7 @@ const CarDetails: React.FC<Props> = ({ isOpen, closeModal, car }) => {
                     <div className="flex gap-3">
                       <div className="bg-primary-blue-100 relative h-24 w-full flex-1 rounded-lg">
                         <Image
-                          src="/hero.png"
+                          src={generateCarImageURL(car, '29')}
                           alt="Car Model"
                           fill
                           priority
@@ -67,7 +68,7 @@ const CarDetails: React.FC<Props> = ({ isOpen, closeModal, car }) => {
                       </div>
                       <div className="bg-primary-blue-100 relative h-24 w-full flex-1 rounded-lg">
                         <Image
-                          src="/hero.png"
+                          src={generateCarImageURL(car, '33')}
                           alt="Car Model"
                           fill
                           priority
@@ -76,7 +77,7 @@ const CarDetails: React.FC<Props> = ({ isOpen, closeModal, car }) => {
                       </div>
                       <div className="bg-primary-blue-100 relative h-24 w-full flex-1 rounded-lg">
                         <Image
-                          src="/hero.png"
+                          src={generateCarImageURL(car, '13')}
                           alt="Car Model"
                           fill
                           priority
