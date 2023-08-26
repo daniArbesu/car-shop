@@ -1,16 +1,32 @@
 import { Car } from '../../types';
 
-export async function fetchCars() {
+interface FilterProps {
+  manufacturer: string;
+  year: number;
+  fuel: string;
+  limit: number;
+  model: string;
+}
+
+export async function fetchCars(filters: FilterProps) {
   const headers = {
     'X-RapidAPI-Key': process.env.NEXT_PUBLIC_GETCARS_API_KEY ?? '',
-    'X-RapidAPI-Host': process.env.NEXT_PUBLIC_GETCARS_API_URL ?? ''
+    'X-RapidAPI-Host': process.env.NEXT_PUBLIC_GETCARS_API_HOST ?? ''
   };
 
+  const { manufacturer, model, year, fuel, limit } = filters;
+  const url = new URL(process.env.NEXT_PUBLIC_GETCARS_API_URL ?? '');
+
+  url.searchParams.append('make', manufacturer);
+  url.searchParams.append('model', model);
+  url.searchParams.append('year', year.toString());
+  url.searchParams.append('fuel_type', fuel);
+  url.searchParams.append('limit', limit.toString());
+
+  console.log(url.toString());
+
   try {
-    const response = await fetch(
-      'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla',
-      { headers }
-    );
+    const response = await fetch(url.toString(), { headers });
     return await response.json();
   } catch (error) {
     console.error(error);
