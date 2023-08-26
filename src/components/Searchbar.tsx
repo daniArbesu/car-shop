@@ -32,12 +32,14 @@ const Searchbar = () => {
 
     if (manufacturer) {
       searchParams.set('manufacturer', manufacturer);
+      searchParams.delete('limit');
     } else {
       searchParams.delete('manufacturer');
     }
 
     if (model) {
       searchParams.set('model', model);
+      searchParams.delete('limit');
     } else {
       searchParams.delete('model');
     }
