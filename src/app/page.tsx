@@ -5,8 +5,13 @@ import Searchbar from '@/components/Searchbar';
 import ShowMore from '@/components/ShowMore';
 import { fuels, yearsOfProduction } from '@/constants';
 import { fetchCars } from '@/utils';
+import { Filter } from '../../types';
 
-export default async function HomePage({ searchParams }) {
+interface Props {
+  searchParams: Filter;
+}
+
+export default async function HomePage({ searchParams }: Props) {
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || '',
     year: searchParams.year || 2022,

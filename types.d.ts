@@ -17,3 +17,11 @@ export interface Option {
   title: string;
   value: string;
 }
+
+export interface Filter {
+  manufacturer?: string;
+  year?: number;
+  model?: string;
+  limit?: number;
+  fuel?: string;
+}
