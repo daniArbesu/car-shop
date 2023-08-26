@@ -3,7 +3,14 @@ import Image from 'next/image';
 import Button from './ui/Button';
 
 const Hero = () => {
-  const handleScrol = () => {};
+  const handleScroll = () => {
+    const nextSection = document.getElementById('discover'); // Select grid section
+
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' }); // Scroll to section
+    }
+  };
+
   return (
     <section className="hero">
       <div className="padding-x flex-1 pt-36">
@@ -13,7 +20,7 @@ const Hero = () => {
         </p>
         <Button
           label="Explore Cars"
-          onClick={handleScrol}
+          onClick={handleScroll}
           className="bg-primary-blue mt-10 rounded-full text-white"
         />
       </div>
